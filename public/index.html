@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Walnut Login Viewer</title>
+<link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Walnut EduTech Login</h1>
+      <span class="head-meta">
+        <span id="resources" class="resources"></span>
+        <span id="counts" class="counts">—</span>
+      </span>
+    </header>
+
+    <form id="add-form" class="add-form">
+      <label>Account<input id="account" required autocomplete="off" /></label>
+      <label>Password<input id="password" type="password" required autocomplete="off" /></label>
+      <button type="submit" id="add-btn">Add / Queue</button>
+      <p id="add-error" class="error"></p>
+    </form>
+
+    <div class="batch-bar">
+      <button type="button" id="select-all" class="secondary">Select all</button>
+      <button type="button" id="rerun-selected" class="secondary" disabled>Rerun selected (0)</button>
+    </div>
+
+    <main id="list" class="list"></main>
+    <p id="empty" class="empty">Nothing queued yet.</p>
+
+    <section class="history">
+      <div class="history-head">
+        <h2>History</h2>
+        <span class="batch-bar">
+          <button type="button" id="rerun-history" class="secondary" disabled>Rerun selected (0)</button>
+          <button type="button" id="clear-history" class="secondary">Clear history</button>
+        </span>
+      </div>
+      <div class="history-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th><input type="checkbox" id="select-all-history" title="Select all" /></th>
+              <th>Session</th>
+              <th>Account</th>
+              <th>Result</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Duration</th>
+              <th>Last path</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+      <p id="history-empty" class="empty">No finished sessions yet.</p>
+    </section>
+  </div>
+
+  <template id="entry-template">
+    <section class="entry-card">
+      <div class="entry-head">
+        <input type="checkbox" class="select-check" title="Select for batch rerun" />
+        <span class="entry-label"></span>
+        <span class="entry-account"></span>
+        <span class="entry-state"></span>
+        <button type="button" class="rerun-btn secondary">Rerun</button>
+        <button type="button" class="remove-btn secondary">Remove</button>
+      </div>
+      <div class="entry-meta">
+        <span class="entry-url"></span>
+        <span class="entry-quiet"></span>
+      </div>
+      <div class="viewer"><img class="screen" alt="" /></div>
+      <div class="console-log"></div>
+      <p class="entry-error error"></p>
+    </section>
+  </template>
+
+  <script src="/app.js"></script>
+</body>
+</html>
